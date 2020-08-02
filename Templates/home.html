@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="" method="post">{% csrf_token %}
+    <label for="originalLink">Link to shorten (Original Link)</label>
+    <input id="originalLink" name="original_url" placeholder="http://www.google.com" type="text">
+
+    <label for="urlSlug">The name of the shortened link</label>
+    <input id="urlSlug" name="slug" placeholder="myurlname" type="text">
+
+    <input type="submit">
+</form>
+
+{% endblock %}
