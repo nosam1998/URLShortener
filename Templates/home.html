@@ -1,15 +1,38 @@
 {% extends "base.html" %}
 
+{% block title %}Home{% endblock %}
+
 {% block content %}
+    <div class="wrapper">
+        <div class="container vertical-center">
+            <div class="row">
 
-<form action="" method="post">{% csrf_token %}
-    <label for="originalLink">Link to shorten (Original Link)</label>
-    <input id="originalLink" name="original_url" placeholder="http://www.google.com" type="text">
+                <div class="col-12 col-md-4"></div>
 
-    <label for="urlSlug">The name of the shortened link</label>
-    <input id="urlSlug" name="slug" placeholder="myurlname" type="text">
+                <div class="col-12 col-md-4">
+                    <form action="" method="post">{% csrf_token %}
+                        <div class="form-group">
+                            <label for="originalLink">Link to shorten (Original Link)</label>
+                            <input id="originalLink" class="form-control" name="original_url"
+                                   placeholder="Website to link to here"
+                                   type="text">
+                        </div>
+                        <div class="form-group">
+                            <label for="urlSlug">The name of the shortened link</label>
+                            <input id="urlSlug" class="form-control" name="slug" placeholder="myurlname" type="text">
+                        </div>
 
-    <input type="submit">
-</form>
+                        <div class="form-group">
+                            <input class="btn btn-primary full-width" type="submit" value="Shorten!">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4"></div>
+        </div>
+    </div>
+
 
 {% endblock %}
