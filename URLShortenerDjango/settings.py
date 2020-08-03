@@ -26,7 +26,7 @@ SECRET_KEY = '+6+yiwzdwc94n@yvdk4$1$*xf^&4m(1sb*c+fbf*!zsbcljw(('
 # SECURITY WARNING: don't run with debug turned on in production!
 
 if "DEBUG_MODE" in os.environ:
-    DEBUG = os.environ.get('DEBUG_MODE')
+    DEBUG = bool(os.environ.get('DEBUG_MODE'))
 else:
     DEBUG = True
 
