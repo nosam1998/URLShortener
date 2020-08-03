@@ -1,6 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-migrations
-db.sqlite3
 .idea
 .idea/.gitignore
 .idea/URLShortener.iml
@@ -8,6 +6,10 @@ db.sqlite3
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
-URLShortenerDjango/__pycache__/
-main/__pycache__/
-main/migrations/__pycache__/
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+venv/
