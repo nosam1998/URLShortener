@@ -31,3 +31,14 @@ body {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+
+.hide-scroll {
+    overflow: hidden;
+}
+
+.text-center {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: .85em;
+}

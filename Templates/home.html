@@ -19,12 +19,20 @@
                         </div>
                         <div class="form-group">
                             <label for="urlSlug">The name of the shortened link</label>
-                            <input id="urlSlug" class="form-control" name="slug" placeholder="myurlname" type="text">
+                            <input id="urlSlug" class="form-control" name="slug" maxlength="255" placeholder="myurlname"
+                                   type="text">
                         </div>
 
                         <div class="form-group">
                             <input class="btn btn-primary full-width" type="submit" value="Shorten!">
                         </div>
+
+                        {% if final_url %}
+                            <div class="form-group py-3" onclick="copyToClipboard()">
+                                <label for="final-url" class="text-center">Click me to copy!</label>
+                                <textarea class="form-control hide-scroll" id="final-url" rows="1"></textarea>
+                            </div>
+                        {% endif %}
 
                     </form>
                 </div>
@@ -35,25 +43,27 @@
     </div>
 
     <script>
-        const f = document.getElementById("my-form");
+        const hiddenInput = document.getElementById("final-url");
+
+        document.addEventListener('DOMContentLoaded', function () {
+            hiddenInput.value = window.location.origin + "/" + "{{ final_url }}/";
+        }, false);
 
         function copyToClipboard() {
-            /* Get the text field */
-            var copyText = document.getElementById("urlSlug");
-            copyText.value = copyText.value.replace(/[^A-Z0-9]+/ig, "_");
-            copyText.value = window.location.origin + "/" + copyText.value;
-            console.log(copyText.value);
-            console.log(copyText.value);
-            /* Select the text field */
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+            if (hiddenInput.value !== "") {
+                console.log(hiddenInput.value);
+                /* Select the text field */
+                hiddenInput.select();
+                hiddenInput.setSelectionRange(0, 99999); /*For mobile devices*/
 
-            /* Copy the text inside the text field */
-            document.execCommand("copy");
-            alert("Link copied to clipboard!")
-        }
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
 
-        f.addEventListener("submit", copyToClipboard);
+                window.location.href = window.location.origin;  // TODO Should I use this?
+            } else {
+                console.log("Enter a url first before it's copied automatically!")
+            }
+        };
     </script>
 
 {% endblock %}
