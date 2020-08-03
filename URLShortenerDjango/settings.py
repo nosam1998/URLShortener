@@ -24,7 +24,7 @@ SECRET_KEY = '+6+yiwzdwc94n@yvdk4$1$*xf^&4m(1sb*c+fbf*!zsbcljw(('
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'https://nosam1998-url-shortener.herokuapp.com/', '*']
 
