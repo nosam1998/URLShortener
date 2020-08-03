@@ -1,0 +1,1 @@
+web: gunicorn URLShortenerDjango.wsgi --log-file -
