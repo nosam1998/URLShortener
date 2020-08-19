@@ -55,7 +55,7 @@ class RedirectUser(View):
     def get(self, request, short_url):
         obj = ShortenedUrl.objects.filter(slug=short_url)
         if obj.count() == 1:
-            my_obj = my_obj
+            my_obj = obj[0]
             click = ClickedBy()
             click.ip_address = visitor_ip_address(request)
             click.short_url = my_obj
