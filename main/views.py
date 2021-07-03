@@ -1,6 +1,3 @@
-import random
-import re
-import string
 from django.shortcuts import render, redirect
 from django.utils.text import slugify
 from django.views import View
@@ -10,7 +7,6 @@ from .models import ShortenedUrl, ClickedBy
 
 
 def visitor_ip_address(request):
-
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
 
     if x_forwarded_for:
@@ -33,7 +29,6 @@ class Home(View):
         if form.is_valid():
             slug = form.cleaned_data.get('slug')
             # TODO Validate that the slug doesn't contain any bad characters
-            print(slug)
             new_slug = slugify(slug)
             slug_search = ShortenedUrl.objects.filter(slug=new_slug)
 
@@ -60,12 +55,10 @@ class RedirectUser(View):
             click.ip_address = visitor_ip_address(request)
             click.short_url = my_obj
             click.save()
-            print(my_obj.used_count)
+
             my_obj.used_count = int(my_obj.used_count) + 1
             my_obj.save()
-            print(my_obj.used_count)
+
             return redirect(my_obj.original_url)
-        elif obj.count() == 0:
-            return redirect("/")
         else:
             return redirect("/")

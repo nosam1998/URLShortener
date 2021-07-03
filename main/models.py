@@ -8,7 +8,7 @@ class ShortenedUrl(models.Model):
     used_count = models.IntegerField(default=0)
 
     def __str__(self):
-        return "{}".format(self.slug)
+        return self.slug
 
 
 class ClickedBy(models.Model):

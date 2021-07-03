@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 import main.views as main
+import api.views as api
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main.Home.as_view(), name="home"),
     path('<str:short_url>/', main.RedirectUser.as_view(), name="redirectUser"),
+    path('api/<str:slug>/', api.UrlData.as_view(), name="api"),
 ]
